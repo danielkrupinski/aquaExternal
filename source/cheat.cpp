@@ -284,14 +284,11 @@ void cheat::SpoofMusicKit(int MusicID, remote::Handle* csgo, remote::MapModuleMe
 	if(!originalMusicID)
 		return;
 
-	if(csgo->m_addressOfPlayerResource)
+	if(csgo->m_addressOfPlayerResource && originalMusicID != spoofedMusicID)
 	{
-		if(originalMusicID != spoofedMusicID)
-		{
-			csgo->Write((void*) (csgo->m_addressOfPlayerResource + 0x5020 + (LocalPlayerIndex * 4)), &spoofedMusicID, sizeof(spoofedMusicID));
-			cout << "Changed music kit ID to " << dec << spoofedMusicID << " on address " << hex << csgo->m_addressOfPlayerResource + 0x4FDC + (LocalPlayerIndex * 4);
-			cout << " on entity index " << dec << LocalPlayerIndex << endl;
-		}
+		csgo->Write((void*) (csgo->m_addressOfPlayerResource + 0x5020 + (LocalPlayerIndex * 4)), &spoofedMusicID, sizeof(spoofedMusicID));
+		cout << "Changed music kit ID to " << dec << spoofedMusicID << " on address " << hex << csgo->m_addressOfPlayerResource + 0x5020 + (LocalPlayerIndex * 4);
+		cout << " on entity index " << dec << LocalPlayerIndex << endl;
 	}
 }
 

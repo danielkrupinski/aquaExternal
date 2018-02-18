@@ -319,7 +319,7 @@ int main()
 		
 		cheat::NoFlash(&csgo, &client);
 		
-		updateConfigValues();
+		//updateConfigValues(); // this lags on some slow systems
 		
 		std::this_thread::sleep_for(chrono::milliseconds(1)); // optimization
 	}
